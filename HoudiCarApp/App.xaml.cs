@@ -1,14 +1,22 @@
-﻿using System.Configuration;
-using System.Data;
+﻿using MyCarApp;
 using System.Windows;
 
 namespace HoudiCarApp
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
-    }
+        [STAThread]
+        public static void Main()
+        {
+            var app = new App();
+            app.InitializeComponent();
+            app.Run(new MainWindow()); 
+        }
 
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+        }
+    }
 }

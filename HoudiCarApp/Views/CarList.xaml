@@ -1,0 +1,72 @@
+﻿<Window x:Class="MyCarApp.Views.CarList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Advertentielijst" Height="600" Width="800"
+        Background="Black">
+
+    <Window.Resources>
+        <!-- Stijlen voor knoppen en tekstvakken -->
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="Orange"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="5,0,0,5"/>
+        </Style>
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+
+    <Grid>
+        <StackPanel Margin="10">
+            <!-- Titel -->
+            <TextBlock Text="Advertentielijst" FontSize="24" FontWeight="Bold" Foreground="Orange" Margin="10,0,0,10"/>
+
+            <!-- Zoekfilters -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Grid>
+                    <TextBox x:Name="ModelTextBox" Width="200"/>
+                    <TextBlock Text="Merk of model van auto" Foreground="Black" Margin="10,0,0,0"
+                               VerticalAlignment="Center" IsHitTestVisible="False"
+                               Visibility="{Binding Text.IsEmpty, ElementName=ModelTextBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                </Grid>
+                <Grid>
+                    <TextBox x:Name="LocationTextBox" Width="200"/>
+                    <TextBlock Text="Plaatsnaam (bijv. Brussel, Antwerpen)" Foreground="Black" Margin="10,0,0,0"
+                               VerticalAlignment="Center" IsHitTestVisible="False"
+                               Visibility="{Binding Text.IsEmpty, ElementName=LocationTextBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                </Grid>
+            </StackPanel>
+
+            <!-- Lijst van auto's -->
+            <ListView x:Name="CarListView" Margin="0,0,0,10" Background="Black" BorderBrush="Orange" BorderThickness="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Orange" BorderThickness="0,0,0,1" Padding="10" Background="Black">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding ImagePath}" Width="100" Height="75" Margin="0,0,10,0"/>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Model}" FontWeight="Bold" FontSize="16" Foreground="White"/>
+                                    <TextBlock Text="{Binding Price, StringFormat=C}" FontSize="14" Foreground="Orange"/>
+                                    <TextBlock Text="{Binding Location}" FontSize="12" Foreground="White"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Kilometerstand}" FontSize="12" Foreground="White" Margin="0,0,10,0"/>
+                                        <TextBlock Text="{Binding Year}" FontSize="12" Foreground="White"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>
