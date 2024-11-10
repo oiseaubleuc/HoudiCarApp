@@ -3,6 +3,8 @@ using System.Linq;
 using System.Windows;
 using HoudiCarApp.Models;
 using Microsoft.EntityFrameworkCore;
+using HoudiCarApp.Views;
+
 
 namespace HoudiCarApp
 {
@@ -24,7 +26,7 @@ namespace HoudiCarApp
                 {
                     _cars = context.Cars.Include(c => c.FuelType).ToList();
                 }
-                CarListView.ItemsSource = _cars;
+               //CarList.ItemsSource = _cars;
             }
             catch (Exception ex)
             {
@@ -92,7 +94,7 @@ namespace HoudiCarApp
                 filteredCars = filteredCars.Where(c => c.Jaar <= maxYear).ToList();
             }
 
-            CarListView.ItemsSource = filteredCars;
+           //CarListView.ItemsSource = filteredCars;
         }
 
         private int GetComboBoxValueAsInt(System.Windows.Controls.ComboBox comboBox)

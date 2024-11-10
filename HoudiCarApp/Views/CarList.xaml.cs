@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using MyCarApp.Models;
+using HoudiCarApp.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HoudiCarApp.Views
@@ -20,11 +20,9 @@ namespace HoudiCarApp.Views
             {
                 using (var context = new CarDealershipContext())
                 {
-                    // Laad alle auto's uit de database
                     List<Car> postedCars = context.Cars.Include(c => c.FuelType).ToList();
 
-                    // Bind de lijst van geposte auto's aan de ListView
-                    CarListView.ItemsSource = postedCars;
+                    //CarListView.ItemsSource = postedCars;
                 }
             }
             catch (Exception ex)

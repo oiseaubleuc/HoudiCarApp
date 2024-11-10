@@ -11,10 +11,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using HoudiCarApp.Models;
 
 
 
-namespace MyCarApp.Views
+namespace HoudiCarApp.Views
 {
     public partial class CarView : Window
     {

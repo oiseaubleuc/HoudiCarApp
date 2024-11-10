@@ -1,4 +1,4 @@
-﻿<Window x:Class="MyCarApp.Views.CarList"
+﻿<Window x:Class="HoudiCarApp.Views.CarList"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Advertentielijst" Height="600" Width="800"
